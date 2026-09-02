@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PORSENIGAMA 26
 
-## Getting Started
+Official website of the Pekan Olahraga dan Seni Gadjah Mada (PORSENIGAMA) 2026.
 
-First, run the development server:
+## Running the Project
+
+Make sure Node.js and pnpm are installed, then run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Folder Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Use the following structure for pages, modules, and components:
 
-## Learn More
+```text
+app/
+├── nama-page/
+│   └── page.tsx
+├── layout.tsx
+└── page.tsx
 
-To learn more about Next.js, take a look at the following resources:
+src/
+├── modules/
+│   └── nama-page/
+│       └── section.tsx
+└── components/
+    └── nama-page-atau-section/
+        └── nama-component.tsx
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Naming Rules
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- All folder and file names must use `kebab-case`.
+- Page route names should match the page name, for example `app/daftar-lomba/page.tsx`.
+- Page-specific sections should be placed in `src/modules/nama-page/`.
+- Shared or section-specific components should be placed in `src/components/nama-page-atau-section/`.
+- Use descriptive names and avoid uncommon abbreviations.
 
-## Deploy on Vercel
+## Contribution Workflow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 1. Create a Branch
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Branch names must follow the format `<scope>/<section>.<name>`:
+
+```text
+feat/hero.aya
+```
+
+Available scopes:
+
+| Scope   | Usage                                                                                 |
+| ------- | ------------------------------------------------------------------------------------- |
+| `feat`  | Adds a new feature or changes the UI and functionality of a section by more than 60%. |
+| `fix`   | Fixes bugs, errors, or UI issues.                                                     |
+| `ref`   | Refactors code without changing the UI or behavior.                                   |
+| `chore` | README updates or other support-related tasks.                                        |
+
+### 2. Work on Your Assigned Section
+
+Focus on the section or feature assigned to you and follow the folder structure and naming rules above.
+
+### 3. Run Validation
+
+Before committing, you must run linting and type checking:
+
+```bash
+pnpm lint
+pnpm typecheck
+```
+
+All errors must be fixed before continuing.
+
+### 4. Commit
+
+Use the following commit message format:
+
+```text
+<scope>(<section/feature>): <details>
+```
+
+Examples:
+
+```text
+feat(hero): add hero section
+fix(navbar): fix navbar animation
+feat(klasemen): add klasemen animation
+ref(landing): optimize code for landing page
+```
+
+### 5. Push and Open a Pull Request
+
+1. Push the branch to the remote repository.
+2. Create a pull request from that branch to `dev`, not to `main`.
+3. If checks or merge validation fail, fix them first.
+4. After the pull request is ready to merge, confirm it with Aya.
+5. Make revisions if requested.
+
+## Main Scripts
+
+| Command          | Purpose                                         |
+| ---------------- | ----------------------------------------------- |
+| `pnpm dev`       | Runs the development server.                    |
+| `pnpm lint`      | Runs ESLint.                                    |
+| `pnpm typecheck` | Checks TypeScript types without emitting files. |
+| `pnpm build`     | Creates a production build.                     |
+
+## Contributors
+
+### Website Subdivision Subcoordinator
+
+- [Ayasha Rahmadinni](https://github.com/ayashar)
+
+### Developers
+
+- [Akmal Rafli Fauzan](https://github.com/Akmaaalrf)
+- [Chelsea Christofera Antonioli Purnomo](https://github.com/chelchr)
+- [Rafa Attamimi Adnan Atmaja](https://github.com/adnanmaja)
+- [Ramon Fabian](https://github.com/mon-jago)
+- [Salwa Dyah Nafla](https://github.com/wawaDyah)
+- [Seto Aryo Hudoyo](https://github.com/SetoAryo479)
+
+### UX Researcher
+
+- [Jettavane Anatha Pindika](https://github.com/jettapindika)
+
+### UI Designer
+
+- [Ahmad Tariq Hifzhillah](https://github.com/ThariqHifzh)
+
+### IT Division Coordinator
+
+- Azzuddinurrofif Azzuko
