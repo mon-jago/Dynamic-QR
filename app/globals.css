@@ -1,0 +1,308 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-axiforma), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-les-flos), cursive;
+  --font-display-sans: var(--font-les-flos-sans), sans-serif;
+  --font-display-chaos: var(--font-les-flos-chaos), cursive;
+
+  --color-dark-red-100: #eebdb9;
+  --color-dark-red-200: #e59c96;
+  --color-dark-red-300: #dd7b73;
+  --color-dark-red-400: #d45a50;
+  --color-dark-red-500: #c83c31;
+  --color-dark-red-600: #a53129;
+  --color-dark-red-700: #822720;
+  --color-dark-red-800: #671f19;
+  --color-dark-red-900: #4b1713;
+  --color-dark-red-1000: #300e0c;
+
+  --color-dark-orange-100: #fed8d2;
+  --color-dark-orange-200: #fdb1a5;
+  --color-dark-orange-300: #fb8a77;
+  --color-dark-orange-400: #fa634a;
+  --color-dark-orange-500: #f94426;
+  --color-dark-orange-600: #f32807;
+  --color-dark-orange-700: #ce2206;
+  --color-dark-orange-800: #aa1c05;
+  --color-dark-orange-900: #861604;
+  --color-dark-orange-1000: #611003;
+
+  --color-orange-100: #ffe0d2;
+  --color-orange-200: #ffc2a4;
+  --color-orange-300: #fea376;
+  --color-orange-400: #fe8549;
+  --color-orange-500: #fe6c24;
+  --color-orange-600: #fa5401;
+  --color-orange-700: #d54701;
+  --color-orange-800: #af3b01;
+  --color-orange-900: #8a2e01;
+  --color-orange-1000: #642201;
+
+  --color-light-yellow-100: #fff6cf;
+  --color-light-yellow-200: #ffed9f;
+  --color-light-yellow-300: #ffe46f;
+  --color-light-yellow-400: #ffdd49;
+  --color-light-yellow-500: #ffd623;
+  --color-light-yellow-600: #fdcd00;
+  --color-light-yellow-700: #d7ae00;
+  --color-light-yellow-800: #b19000;
+  --color-light-yellow-900: #8b7100;
+  --color-light-yellow-1000: #655200;
+
+  --color-light-cream-100: #ffeadd;
+  --color-light-cream-200: #fed6bc;
+  --color-light-cream-300: #fec19a;
+  --color-light-cream-400: #fea770;
+  --color-light-cream-500: #fd8d46;
+  --color-light-cream-600: #fd731c;
+  --color-light-cream-700: #ec5d02;
+  --color-light-cream-800: #c24d02;
+  --color-light-cream-900: #983c01;
+  --color-light-cream-1000: #6d2b01;
+
+  --color-black-100: #d2d2d2;
+  --color-black-200: #bcbcbc;
+  --color-black-300: #a6a6a6;
+  --color-black-400: #909090;
+  --color-black-500: #797979;
+  --color-black-600: #636363;
+  --color-black-700: #4d4d4d;
+  --color-black-800: #363636;
+  --color-black-900: #202020;
+  --color-black-1000: #161616;
+
+  --color-pink-100: #fed2db;
+  --color-pink-200: #fca6b7;
+  --color-pink-300: #fb7993;
+  --color-pink-400: #fa5475;
+  --color-pink-500: #f92e57;
+  --color-pink-600: #f80939;
+  --color-pink-700: #d4062f;
+  --color-pink-800: #ae0527;
+  --color-pink-900: #89041f;
+  --color-pink-1000: #640316;
+
+  --color-darker-pink-100: #f1dfe2;
+  --color-darker-pink-200: #e3bfc5;
+  --color-darker-pink-300: #d69fa9;
+  --color-darker-pink-400: #c87f8c;
+  --color-darker-pink-500: #ba5f6f;
+  --color-darker-pink-600: #ab4a5b;
+  --color-darker-pink-700: #913f4d;
+  --color-darker-pink-800: #783440;
+  --color-darker-pink-900: #5e2932;
+  --color-darker-pink-1000: #451e25;
+
+  --color-purple-100: #e7def0;
+  --color-purple-200: #cfbde1;
+  --color-purple-300: #b89cd2;
+  --color-purple-400: #a07cc2;
+  --color-purple-500: #885bb3;
+  --color-purple-600: #704698;
+  --color-purple-700: #5f3c82;
+  --color-purple-800: #4f316b;
+  --color-purple-900: #3e2755;
+  --color-purple-1000: #2e1d3e;
+
+  --color-navy-100: #bfd7e6;
+  --color-navy-200: #a0c4d9;
+  --color-navy-300: #80b0cd;
+  --color-navy-400: #609cc0;
+  --color-navy-500: #4587af;
+  --color-navy-600: #396f8f;
+  --color-navy-700: #2c566f;
+  --color-navy-800: #234458;
+  --color-navy-900: #1a3241;
+  --color-navy-1000: #102029;
+
+  --color-pastel-blue-100: #d9eaf7;
+  --color-pastel-blue-200: #b3d5ef;
+  --color-pastel-blue-300: #8cc0e7;
+  --color-pastel-blue-400: #66abdf;
+  --color-pastel-blue-500: #479ad9;
+  --color-pastel-blue-600: #2b89cf;
+  --color-pastel-blue-700: #2574b0;
+  --color-pastel-blue-800: #1e6091;
+  --color-pastel-blue-900: #184b72;
+  --color-pastel-blue-1000: #113753;
+
+  --color-white-100: #ffffff;
+  --color-white-200: #e9e9e9;
+  --color-white-300: #d3d3d3;
+  --color-white-400: #bdbdbd;
+  --color-white-500: #a7a7a7;
+  --color-white-600: #919191;
+  --color-white-700: #7b7b7b;
+  --color-white-800: #656565;
+  --color-white-900: #4f4f4f;
+  --color-white-1000: #393939;
+
+  --color-light-blue-100: #def8ff;
+  --color-light-blue-200: #bef0ff;
+  --color-light-blue-300: #94e6ff;
+  --color-light-blue-400: #6addff;
+  --color-light-blue-500: #40d3ff;
+  --color-light-blue-600: #16c9ff;
+  --color-light-blue-700: #00b5eb;
+  --color-light-blue-800: #0095c1;
+  --color-light-blue-900: #007497;
+  --color-light-blue-1000: #00546d;
+
+  --color-turquoise-100: #d9faf2;
+  --color-turquoise-200: #b4f4e6;
+  --color-turquoise-300: #8eefd9;
+  --color-turquoise-400: #6beacd;
+  --color-turquoise-500: #49e5c2;
+  --color-turquoise-600: #26e0b6;
+  --color-turquoise-700: #1cc39d;
+  --color-turquoise-800: #17a181;
+  --color-turquoise-900: #127e66;
+  --color-turquoise-1000: #0d5c4a;
+
+  --color-dark-green-100: #c1e5c7;
+  --color-dark-green-200: #a2d8ab;
+  --color-dark-green-300: #83cb8e;
+  --color-dark-green-400: #64be72;
+  --color-dark-green-500: #49ae58;
+  --color-dark-green-600: #3c8f49;
+  --color-dark-green-700: #2f7039;
+  --color-dark-green-800: #25582d;
+  --color-dark-green-900: #1b4121;
+  --color-dark-green-1000: #112915;
+
+  --color-brown-100: #e2cecb;
+  --color-brown-200: #d3b6b2;
+  --color-brown-300: #c49d98;
+  --color-brown-400: #b6857e;
+  --color-brown-500: #a76d64;
+  --color-brown-600: #915a52;
+  --color-brown-700: #774a44;
+  --color-brown-800: #5d3a35;
+  --color-brown-900: #432a26;
+  --color-brown-1000: #2a1a18;
+
+  --color-red-100: #f9d3d5;
+  --color-red-200: #f3a6ac;
+  --color-red-300: #ec7a82;
+  --color-red-400: #e64d59;
+  --color-red-500: #e0212f;
+  --color-red-600: #c41b28;
+  --color-red-700: #a71722;
+  --color-red-800: #8a131c;
+  --color-red-900: #6d0f16;
+  --color-red-1000: #500b10;
+
+  --color-light-green-100: #dff4e3;
+  --color-light-green-200: #c0e9c7;
+  --color-light-green-300: #a0dfab;
+  --color-light-green-400: #81d48f;
+  --color-light-green-500: #61c973;
+  --color-light-green-600: #44bf59;
+  --color-light-green-700: #38a44b;
+  --color-light-green-800: #2e873e;
+  --color-light-green-900: #246a30;
+  --color-light-green-1000: #1a4d23;
+}
+
+@utility font-h1 {
+  font-family: var(--font-les-flos), Arial, Helvetica, sans-serif;
+  font-size: 58px;
+  line-height: 87px;
+  letter-spacing: 0px;
+}
+
+@utility font-h2 {
+  font-family: var(--font-les-flos), Arial, Helvetica, sans-serif;
+  font-size: 48px;
+  line-height: 72px;
+  letter-spacing: 0px;
+}
+
+@utility font-h3 {
+  font-family: var(--font-les-flos), Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  line-height: 60px;
+  letter-spacing: 0px;
+}
+
+@utility font-h4 {
+  font-family: var(--font-les-flos), Arial, Helvetica, sans-serif;
+  font-size: 34px;
+  line-height: 51px;
+  letter-spacing: 0px;
+}
+
+@utility font-h5 {
+  font-family: var(--font-les-flos), Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  line-height: 42px;
+  letter-spacing: 0px;
+}
+
+@utility font-h6 {
+  font-family: var(--font-les-flos), Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0px;
+}
+
+@utility font-h7 {
+  font-family: var(--font-les-flos), Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0px;
+}
+
+@utility font-b1 {
+  font-family: var(--font-axiforma), Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+@utility font-b2 {
+  font-family: var(--font-axiforma), Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0px;
+}
+
+@utility font-b3 {
+  font-family: var(--font-axiforma), Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0px;
+}
+
+@utility font-b4 {
+  font-family: var(--font-axiforma), Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  line-height: 15px;
+  letter-spacing: 0px;
+}
+
+@utility font-b5 {
+  font-family: var(--font-axiforma), Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  line-height: 12px;
+  letter-spacing: 0px;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
