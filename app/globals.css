@@ -233,6 +233,13 @@
   letter-spacing: 0px;
 }
 
+@utility font-h4-sans {
+  font-family: var(--font-les-flos-sans), Arial, Helvetica, sans-serif;
+  font-size: 34px;
+  line-height: 51px;
+  letter-spacing: 0px;
+}
+
 @utility font-h5 {
   font-family: var(--font-les-flos), Arial, Helvetica, sans-serif;
   font-size: 28px;
@@ -244,6 +251,13 @@
   font-family: var(--font-les-flos), Arial, Helvetica, sans-serif;
   font-size: 24px;
   line-height: 36px;
+  letter-spacing: 0px;
+}
+
+@utility font-h6-sans {
+  font-family: var(--font-les-flos-sans), Arial, Helvetica, sans-serif;
+  font-size: 34px;
+  line-height: 51px;
   letter-spacing: 0px;
 }
 
