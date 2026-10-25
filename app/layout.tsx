@@ -68,7 +68,11 @@ export const metadata: Metadata = {
   description: "Pekan Olahraga dan Seni Gadjah Mada 2026",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"
