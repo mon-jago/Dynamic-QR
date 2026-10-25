@@ -1,37 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createQrToken, isValidDestination } from "@/lib/qr-token";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  const requestUrl = new URL(request.url);
-  const destination = requestUrl.searchParams.get("destination")?.trim();
-
-  // Mode 1: Jika ada destination parameter (backward-compatible prototype)
-  if (destination) {
-    if (!isValidDestination(destination)) {
-      return NextResponse.json(
-        { error: "Destination harus berupa URL http atau https." },
-        { status: 400 }
-      );
-    }
-
-    const token = createQrToken(destination);
-    const appOrigin = process.env.NEXT_PUBLIC_APP_URL ?? requestUrl.origin;
-    const redirectUrl = new URL("/qr", appOrigin);
-    redirectUrl.searchParams.set("token", token);
-
-    return NextResponse.json(
-      { url: redirectUrl.toString() },
-      {
-        headers: {
-          "Cache-Control": "no-store, max-age=0",
-        },
-      }
-    );
-  }
-
-  // Mode 2: Dynamic Venue QR Token untuk Porquest
   const backendUrl =
     process.env.BACKEND_INTERNAL_URL || "https://api.porsenggg.my.id";
   const staffApiKey =
@@ -67,7 +38,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(data, {
       status: response.status,
       headers: {
-        "Cache-Control": "no-store, max-age=0",
+        "Cache-Control": "no-store, no-cache, must-revalidate",
       },
     });
   } catch (error) {
