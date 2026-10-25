@@ -6,13 +6,15 @@ import QRCode from "qrcode";
 export default function Home() {
   const [isOn, setIsOn] = useState<boolean>(true);
   const [qrDataUrl, setQrDataUrl] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const isFetchingRef = useRef<boolean>(false);
 
   const fetchVenueQrToken = useCallback(async () => {
     if (isFetchingRef.current) return;
     isFetchingRef.current = true;
     setLoading(true);
+    setErrorMessage(null);
 
     try {
       const res = await fetch("/api/display/venue/qr-token", {
@@ -25,9 +27,15 @@ export default function Home() {
           margin: 1,
         });
         setQrDataUrl(dataUrl);
+      } else {
+        const msg =
+          json?.error?.message || `Gagal memuat QR (Status ${res.status})`;
+        setErrorMessage(msg);
       }
     } catch (err) {
-      console.error("Gagal memuat QR:", err);
+      setErrorMessage(
+        err instanceof Error ? err.message : "Gagal menghubungi server QR."
+      );
     } finally {
       setLoading(false);
       isFetchingRef.current = false;
@@ -55,7 +63,7 @@ export default function Home() {
   }, [isOn, fetchVenueQrToken]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-6 gap-4 bg-white text-black">
+    <main className="min-h-screen flex flex-col items-center justify-center p-6 gap-4 bg-white text-black font-sans">
       <div className="flex items-center gap-3">
         <button
           type="button"
@@ -79,15 +87,26 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="w-[320px] h-[320px] flex items-center justify-center border border-gray-300 rounded bg-white">
+      <div className="w-[320px] h-[320px] flex flex-col items-center justify-center border border-gray-300 rounded bg-white p-2">
         {isOn ? (
-          qrDataUrl ? (
+          qrDataUrl && !loading ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={qrDataUrl}
               alt="Venue QR Code"
               className="w-full h-full object-contain"
             />
+          ) : errorMessage ? (
+            <div className="flex flex-col items-center gap-2 p-4 text-center">
+              <p className="text-xs text-red-600 font-semibold">{errorMessage}</p>
+              <button
+                type="button"
+                onClick={fetchVenueQrToken}
+                className="px-3 py-1 bg-red-100 hover:bg-red-200 text-red-700 rounded text-xs font-medium cursor-pointer"
+              >
+                Coba Lagi
+              </button>
+            </div>
           ) : (
             <p className="text-sm text-gray-400">Memuat QR...</p>
           )
