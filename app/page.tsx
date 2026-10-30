@@ -17,12 +17,13 @@ export default function Home() {
       });
       const json = await res.json();
       if (res.ok && json.success && json.data?.token) {
+        // Background transparan (#00000000) dan margin 0 untuk menghilangkan semua kotak/border putih pada QR
         const dataUrl = await QRCode.toDataURL(json.data.token, {
-          width: 480,
-          margin: 1,
+          width: 500,
+          margin: 0,
           color: {
             dark: "#061938",
-            light: "#ffffff",
+            light: "#00000000",
           },
         });
         setQrDataUrl(dataUrl);
@@ -54,9 +55,9 @@ export default function Home() {
   }, [fetchVenueQrToken]);
 
   return (
-    <main className="min-h-screen w-full flex items-center justify-center bg-[#aee2ff] p-2 sm:p-4 md:p-6 overflow-hidden select-none">
-      {/* Container utama dengan rasio gambar 1512 : 982 */}
-      <div className="relative w-full max-w-[1200px] aspect-[1512/982] max-h-[96dvh] flex items-center justify-center shadow-2xl rounded-2xl md:rounded-3xl overflow-hidden bg-white">
+    <main className="h-dvh w-full flex items-center justify-center bg-[#061938] p-0 m-0 overflow-hidden select-none">
+      {/* Container utama dengan rasio gambar 1512 : 982 tanpa padding atau border putih */}
+      <div className="relative w-full max-w-[1400px] aspect-[1512/982] max-h-dvh flex items-center justify-center bg-transparent overflow-hidden">
         {/* Gambar Background Resmi */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -65,15 +66,15 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-contain pointer-events-none select-none z-0"
         />
 
-        {/* Kotak QR Code yang tepat berada di dalam border kotak putih background */}
-        {/* Koordinat presisi berdasarkan 1512x982: top 42.67%, left 37.76%, width 24.47%, height 37.58% */}
+        {/* Kotak QR Code transparan presisi di dalam border kotak background (tanpa padding/border putih) */}
+        {/* Koordinat presisi berdasarkan 1512x982: top 43.1%, left 38.2%, width 23.6%, height 36.6% */}
         <div
-          className="absolute z-10 flex items-center justify-center p-1 sm:p-2 overflow-hidden"
+          className="absolute z-10 flex items-center justify-center p-0 m-0 overflow-hidden"
           style={{
-            top: "42.67%",
-            left: "37.76%",
-            width: "24.47%",
-            height: "37.58%",
+            top: "43.1%",
+            left: "38.2%",
+            width: "23.6%",
+            height: "36.6%",
           }}
         >
           {qrDataUrl ? (
@@ -81,7 +82,7 @@ export default function Home() {
             <img
               src={qrDataUrl}
               alt="Dynamic QR Code Venue Check-In"
-              className="w-full h-full object-contain animate-in fade-in duration-300"
+              className="w-full h-full object-contain animate-in fade-in duration-200"
             />
           ) : (
             <div className="size-8 sm:size-12 border-4 border-[#061938] border-t-transparent rounded-full animate-spin" />
